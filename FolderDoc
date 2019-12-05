@@ -310,6 +310,26 @@ function populateFolderDocuments(foldername){
         }
     }
 
+$('#imsc .docsdownload').click(function (ev) {
+        ev.stopPropagation();
+    });
+
+    $('#base .docsdownload').click(function (ev) {
+        ev.stopPropagation();
+    });
+
+    if (foldername == "Drafts" || foldername == "Consolidated") {
+        for (var i = 0; i < checkedValues.length; i++) {
+            $("#" + checkedValues[i]).prop("checked", true);
+        }
+    } else {
+        if (checkedValuesDict[foldername]) {
+            for (var i = 0; i < checkedValuesDict[foldername].length; i++) {
+                $("#DocId_" + checkedValuesDict[foldername][i]).prop("checked", true);
+            }
+        }
+    }
+}
 
 
 
