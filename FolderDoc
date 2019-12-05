@@ -311,3 +311,26 @@ function populateFolderDocuments(foldername){
     }
 
 
+
+
+
+$(document).on("click", ".clickfolder", function () {
+    populateFolderDocuments($(this).find('.heading').attr("name"));
+    //Expand or collapse this panel
+    $(this).siblings(".accordionbody").slideToggle('fast').toggleClass("active");
+    //Hide the other panels
+    //$("#base .accordionbody").not($(this).next().next()).slideUp('fast').removeClass("active"); // Hiding Temporarily
+    //changes arrow 
+    if ($(this).find('.icon').hasClass('icon-folder')) {
+        $(this).find('.icon').removeClass('icon-folder').addClass('icon-closed-folder');
+        $(this).find('.icon').attr('title', 'Expand');
+        $(this).attr('aria-expanded', 'false');
+    } else {
+        //$('#base .accordionheading').find('.icon').removeClass('icon-folder').addClass('icon-closed-folder'); // Hiding Temporarily
+        $(this).find('.icon').removeClass('icon-closed-folder').addClass('icon-folder');
+        $(this).find('.icon').attr('title', 'Collapse');
+        $(this).attr('aria-expanded', 'true');
+    }
+});
+
+
