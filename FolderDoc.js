@@ -334,7 +334,8 @@ $('#imsc .docsdownload').click(function (ev) {
 
 
 
-$(document).on("click", ".clickfolder", function () {
+$(document).on("click keypress", ".clickfolder", function (e) {
+    if (e.type === 'click' || e.which === 13) {
     populateFolderDocuments($(this).find('.heading').attr("name"));
     //Expand or collapse this panel
     $(this).siblings(".accordionbody").slideToggle('fast').toggleClass("active");
@@ -350,6 +351,7 @@ $(document).on("click", ".clickfolder", function () {
         $(this).find('.icon').removeClass('icon-closed-folder').addClass('icon-folder');
         $(this).find('.icon').attr('title', 'Collapse');
         $(this).attr('aria-expanded', 'true');
+    }
     }
 });
 
